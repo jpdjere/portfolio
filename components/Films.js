@@ -1,8 +1,17 @@
 import { useState } from 'react';
 import { FilmsGraph } from './FilmsGraph';
+import { FilmsResults } from './FilmsResults';
 
-export const Films = ({ films }) => {
-	const [ first ] = films;
+export const Films = ({ films  }) => {
+	const lastDate = films[0].date;
+	const [selectedDate, setSelectedDate] = useState(lastDate);
+
+	const changeSelectedDate = (value) => {
+		if(!value || !value.date) {
+			return
+		}
+		setSelectedDate(value.date);
+	}
 
   return (
   	<section id="films">
@@ -12,8 +21,8 @@ export const Films = ({ films }) => {
 					<h1>Movies I've watched</h1>
 					<p>I'm a big cinema fan and I (obsessively) keep track of the films I have seen. So I've decided to share this list with you, making use of the Google Spreadsheet API and The Internet Movie DB API.</p>
 				</div>
-				<FilmsGraph films={films}/>
-				{/* <FilmsResults /> */}
+				<FilmsGraph films={films} changeSelectedDate={changeSelectedDate} />
+				<FilmsResults films={films} selectedDate={selectedDate}/>
 			</div>
    </section> 
   )

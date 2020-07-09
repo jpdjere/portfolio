@@ -1,3 +1,5 @@
+const getHexCode = () => (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+
 export const formatFilms = (films) => {
   return films.reduce((acc, currentValue, currentIndex) => {
     const [title, date, code] = currentValue;
@@ -8,12 +10,12 @@ export const formatFilms = (films) => {
     if (firstIndex || differentDate) {
       return acc.concat([{
         date: currentValue[1],
-        films: [ {title, code }]
+        films: [ {title, code, hexId: getHexCode() }]
       }])
     }
     else if(sameDate) {
       const lastFilms = [...acc].slice(-1)[0].films;
-      const last = [...lastFilms, { title, code }];
+      const last = [...lastFilms, { title, code, hexId: getHexCode() }];
       const tempAcc = [...acc];
       tempAcc[tempAcc.length-1].films = last;
       return [...tempAcc]

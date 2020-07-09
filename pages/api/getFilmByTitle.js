@@ -1,8 +1,11 @@
 import axios from 'axios';
+import axiosRetry from 'axios-retry';
 import { addPosterToFilmData } from '../../utils/addPoster';
 
+axiosRetry(axios, { retries: 3 });
+
 export default async (req, res) => {
-  const url = `https://api.themoviedb.org/4/search/movie?language=en-US&query=${req.query.t}&page=1&include_adult=false`;
+  const url = encodeURI(`https://api.themoviedb.org/4/search/movie?language=en-US&query=${req.query.t}&page=1&include_adult=false`);
   const films = await axios({
     url,
     headers: {
@@ -10,7 +13,11 @@ export default async (req, res) => {
     }
   });
   const [ firstResult ] = films.data.results;
-  const firstResultWithPoster = addPosterToFilmData(firstResult);
+  if(!firstResult) {
+    return res.send({});
+  }
+  const { poster_path } = firstResult;
+  const firstResultWithPoster = firstResult.poster_path && addPosterToFilmData(firstResult);
 
   res.send(firstResultWithPoster);
 }
