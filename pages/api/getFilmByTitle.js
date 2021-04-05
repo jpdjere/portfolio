@@ -14,7 +14,7 @@ export default async (req, res) => {
   });
   const [ firstResult ] = films.data.results;
   if(!firstResult) {
-    return res.send({});
+    return res.status(404).send("No movie found");
   }
   const { poster_path } = firstResult;
   const firstResultWithPoster = firstResult.poster_path && addPosterToFilmData(firstResult);

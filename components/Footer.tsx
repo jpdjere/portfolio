@@ -1,18 +1,18 @@
-export const Footer = () => {
+import { FC } from "react";
+
+export const Footer: FC = () => {
   return (
    <footer>
      	<div className="row">
 
      		<div className="col-six tab-full pull-right social">
-
      			<ul className="footer-social">        
 			      <li><a href="#"><i className="fa fa-facebook"></i></a></li>
 			      <li><a href="#"><i className="fa fa-behance"></i></a></li>
 			      <li><a href="#"><i className="fa fa-twitter"></i></a></li>
 			      <li><a href="#"><i className="fa fa-dribbble"></i></a></li>
 			      <li><a href="#"><i className="fa fa-instagram"></i></a></li>
-			   </ul> 
-	      		
+			   	</ul> 
 	      </div>
 
       	<div className="col-six tab-full">

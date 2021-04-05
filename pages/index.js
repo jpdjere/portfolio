@@ -1,14 +1,11 @@
 import Head from 'next/head'
 import { Preloader } from './../components/Preloader';
-import { Intro } from '../components/Intro';
-import { About } from './../components/About';
-import { Contact } from './../components/Contact';
-import { Footer } from './../components/Footer';
-import { Films } from './../components/Films';
+import { App } from './../components/App';
+
 import { createDateMinus6Months } from '../utils/client';
 import { addMovieDetailsFromAPI } from '../utils/addMovieDetailsFromAPI';
 
-export default function Index({ films }) {
+export default function Index(props) {
   return (
     <>
       <Head>
@@ -19,29 +16,35 @@ export default function Index({ films }) {
         <script src="/js/main.js"></script>
       </Head>
       <div id="top">
-        <Intro />
-        <About />
-        <Films
-          films={films}
-        />
-        <Contact />
-        <Footer />
+        <App {...props} />
       </div>
     </>
   );
 }
 
-export async function getStaticProps(context) {
-  const res = await fetch('http://localhost:3000/api/getFilmsList');
-  const fullFilmsList = await res.json();
+export async function getStaticProps() {
+  const fullFilmsList = await getFullFilmsList();
 
   const fullFilmsListWithDetails = addMovieDetailsFromAPI(fullFilmsList);
-  const filmsRaw = await Promise.all(fullFilmsListWithDetails);
-  const films = JSON.parse(JSON.stringify(filmsRaw));
+  const films = await Promise.all(fullFilmsListWithDetails);
+  const filmsFlatttened = films.reduce((acc, current) => {
+    const filmsWithDate = current.films.map(film => ({
+      ...film,
+      dateWatched: current.date
+    }));
+    
+    return [...acc, ...filmsWithDate]
+  }, []);
 
   return {
     props: {
-      films
+      films,
+      filmsFlatttened
     },
   }
+}
+
+async function getFullFilmsList() {
+  const res = await fetch('http://localhost:3000/api/getFilmsList');
+  return res.json();
 }

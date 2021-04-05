@@ -2,7 +2,7 @@ import { useState } from 'react';
 import CalendarHeatmap from 'react-calendar-heatmap';
 import { createDateMinus6Months, createDateWithDiff } from '../utils/client';
 
-export const FilmsGraph = ({ films, changeSelectedDate }) => {
+export const FilmsGraph = ({ filmsDate, changeSelectedDate, deleteSelectedDate }) => {
   const today = new Date();
   const [lastDay, setLastDay] = useState(today);
   const [firstDay, setFirstDay] = useState(createDateMinus6Months(today));
@@ -17,8 +17,9 @@ export const FilmsGraph = ({ films, changeSelectedDate }) => {
       <CalendarHeatmap
         startDate={firstDay}
         endDate={lastDay}
-        values={films}
+        values={filmsDate}
         onMouseOver={(event, value) => changeSelectedDate(value)}
+        onMouseLeave={(event, value) => deleteSelectedDate(null)}
         classForValue={(value) => {
           if (!value) {
             return 'color-scale-0';
