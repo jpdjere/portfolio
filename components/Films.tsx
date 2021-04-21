@@ -2,13 +2,12 @@ import { useState } from 'react';
 import { FilmsGraph } from './FilmsGraph';
 import { FilmsResults } from './FilmsResults';
 
-export const Films = ({ films, filmsFlatttened }) => {
+export const Films = ({ films, filmsFlattened }) => {
 	const lastDate = films[0].date;
 	const [selectedDate, setSelectedDate] = useState(lastDate);
 
 	const changeSelectedDate = (value) => {
 		if(!value || !value.date) {
-			console.log("no value")
 			return
 		}
 		setSelectedDate(value.date);
@@ -30,7 +29,7 @@ export const Films = ({ films, filmsFlatttened }) => {
 					changeSelectedDate={changeSelectedDate}
 					deleteSelectedDate={deleteSelectedDate}
 				/>
-				<FilmsResults films={filmsFlatttened} selectedDate={selectedDate}/>
+				<FilmsResults films={filmsFlattened} selectedDate={selectedDate}/>
 			</div>
    </section> 
   )

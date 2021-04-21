@@ -34,7 +34,7 @@ export function listFilms(auth) {
     const sheets = google.sheets({version: 'v4', auth});
     sheets.spreadsheets.values.get({
       spreadsheetId: '1MEgog9YuQ3TEuhI-MpF1mKoa4J3MXCnDX-XThY2sIiE',
-      range: 'A2:C',
+      range: 'A2:E',
     }, (err, res) => {
       if (err) {
         return console.log('The API returned an error: ' + err);

@@ -4,15 +4,21 @@ import { Contact } from './../components/Contact';
 import { Footer } from './../components/Footer';
 import { Films } from './../components/Films';
 
-export function App({films, filmsFlatttened}) {
-	debugger;
+import { Film, Films as FilmList } from './../types/types';
+
+interface Props {
+	films: FilmList;
+	filmsFlattened: Film[];
+};
+
+export function App({films, filmsFlattened}: Props) {
 	return (
 		<>
 			<Intro />
 			<About />
 			<Films
 				films={films}
-				filmsFlatttened={filmsFlatttened}
+				filmsFlattened={filmsFlattened}
 			/>
 			<Contact />
 			<Footer />

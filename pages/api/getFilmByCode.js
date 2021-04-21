@@ -12,13 +12,10 @@ export default async (req, res) => {
   const [ firstResult ] = films.data.movie_results;
 
   if(!firstResult) {
-    debugger;
     return res.status(404).send("No movie found");
   }
 
   const firstResultWithPoster = addPosterToFilmData(firstResult);
-  if(req.query.id === "tt3704050") {
-    debugger;
-  }
+
   res.send(firstResultWithPoster);
 }

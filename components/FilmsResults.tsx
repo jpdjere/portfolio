@@ -1,10 +1,13 @@
-import { useState, useEffect, FC } from 'react';
-import SwiperCore, { Virtual } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { useState, useEffect } from 'react';
+import { Film } from './../types/types';
+import { Slider } from './Slider';
 
-SwiperCore.use([Virtual]);
+interface Props {
+	films: Film[];
+	selectedDate: Date;
+};
 
-export const FilmsResults: FC = ({films, selectedDate}) => {
+export const FilmsResults = ({films, selectedDate}: Props) => {
 	const [currentSlide, setSlide] = useState(1);
 	useEffect(() => {
 		const slideIndex = films.findIndex(film => film.dateWatched === selectedDate);
@@ -20,45 +23,3 @@ export const FilmsResults: FC = ({films, selectedDate}) => {
 		</div>
   )
 };
-
-const Slider: FC = ({films, currentSlide}) => {
-	const [swiperController, setSwiperController] = useState();
-	// Do my slide settings and calculations
-	// ...
-	const swiper = (
-			<Swiper 
-				onSwiper={setSwiperController}
-				slidesPerView={3}
-				spaceBetween={20}
-				initialSlide={currentSlide}
-				virtual
-			>
-				{films.map((film, index) => {
-						if(!film) return null;
-
-						return (
-							<SwiperSlide key={film.hexId || Math.random()} index={index} virtualIndex={index}>
-								<FilmPoster film={film}/>
-							</SwiperSlide>
-						)})
-					}
-			</Swiper>
-	);
-	swiperController?.slideTo(currentSlide);
-	return swiper;
-}
-
-export const FilmPoster = ({film}) => {
-	const [isLoaded, setLoaded] = useState(false);
-
-	return (
-		<div>
-			<img 
-				src={film.posterURL}
-				alt={film.title}
-				onLoad={()=> setLoaded(true)}
-			/>
-			<p>{film.title}</p>
-		</div>
-	)
-}

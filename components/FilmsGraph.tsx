@@ -7,7 +7,7 @@ export const FilmsGraph = ({ filmsDate, changeSelectedDate, deleteSelectedDate }
   const [lastDay, setLastDay] = useState(today);
   const [firstDay, setFirstDay] = useState(createDateMinus6Months(today));
 
-  const changeMonths = (monthsDiff) => {
+  const changeMonths = (monthsDiff: number) => {
     setLastDay(lastDay => createDateWithDiff(lastDay, monthsDiff));
     setFirstDay(firstDay => createDateWithDiff(firstDay, monthsDiff));
   }

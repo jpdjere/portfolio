@@ -1,9 +1,6 @@
 import Head from 'next/head'
-import { Preloader } from './../components/Preloader';
 import { App } from './../components/App';
-
-import { createDateMinus6Months } from '../utils/client';
-import { addMovieDetailsFromAPI } from '../utils/addMovieDetailsFromAPI';
+import { getEnrichedFilmsFromSpreadsheetAPI } from "./../utils/getEnrichedFilmsFromSpreadsheetAPI";
 
 export default function Index(props) {
   return (
@@ -23,28 +20,12 @@ export default function Index(props) {
 }
 
 export async function getStaticProps() {
-  const fullFilmsList = await getFullFilmsList();
-
-  const fullFilmsListWithDetails = addMovieDetailsFromAPI(fullFilmsList);
-  const films = await Promise.all(fullFilmsListWithDetails);
-  const filmsFlatttened = films.reduce((acc, current) => {
-    const filmsWithDate = current.films.map(film => ({
-      ...film,
-      dateWatched: current.date
-    }));
-    
-    return [...acc, ...filmsWithDate]
-  }, []);
+  const { films, filmsFlattened } = await getEnrichedFilmsFromSpreadsheetAPI();
 
   return {
     props: {
       films,
-      filmsFlatttened
+      filmsFlattened
     },
   }
-}
-
-async function getFullFilmsList() {
-  const res = await fetch('http://localhost:3000/api/getFilmsList');
-  return res.json();
-}
+};
