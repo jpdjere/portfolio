@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { App } from './../components/App';
-import { getEnrichedFilmsFromSpreadsheetAPI } from "./../utils/getEnrichedFilmsFromSpreadsheetAPI";
+import { getDataFromDatabase } from "./../utils/databaseActions";
 
 export default function Index(props) {
   return (
@@ -20,12 +20,12 @@ export default function Index(props) {
 }
 
 export async function getStaticProps() {
-  const { films, filmsFlattened } = await getEnrichedFilmsFromSpreadsheetAPI();
+  const { films, filmsFlattened } = await getDataFromDatabase();
 
   return {
-    props: {
-      films,
-      filmsFlattened
-    },
+    props: JSON.parse(JSON.stringify({
+      films: films.datos,
+      filmsFlattened: filmsFlattened.datos
+    })),
   }
 };

@@ -10,7 +10,7 @@ export const formatFilms = (films) => {
     if (firstIndex || differentDate) {
       return acc.concat([{
         date: currentValue[1],
-        films: [ {title, code, hexId: getHexCode(), director }]
+        films: [{title, code, hexId: getHexCode(), director }]
       }])
     }
     else if(sameDate) {

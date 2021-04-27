@@ -1,4 +1,7 @@
 import mongoose from 'mongoose';
+const { Schema } = mongoose;
+
+
 
 const { MONGODB_URI } = process.env;
 
@@ -37,9 +40,19 @@ async function dbConnect() {
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
       return mongoose
     })
+
   }
   cached.conn = await cached.promise;
   return cached.conn;
 }
 
+
+const FilmsSchema = new Schema({created_at: { type: Date, required: true, default: Date.now }},{ strict: false });
+const FilmsFlattenedSchema = new Schema({created_at: { type: Date, required: true, default: Date.now }},{ strict: false });
+
+// https://stackoverflow.com/questions/59851947/now-mongoose-cannot-overwrite-model-once-compiled
+const FilmsModel = mongoose.models['films'] || mongoose.model('films', FilmsSchema);
+const FilmsFlattenedModel = mongoose.models['flattenedFilms'] || mongoose.model('flattenedFilms', FilmsFlattenedSchema);
+
+export { FilmsModel, FilmsFlattenedModel };
 export default dbConnect;

@@ -21,7 +21,7 @@ function flattenFilms(films) {
   return films.reduce((acc, current) => {
     const filmsWithDate = current.films.map(film => ({
       ...film,
-      dateWatched: current.date
+      date_watched: current.date
     }));
     
     return [...acc, ...filmsWithDate]

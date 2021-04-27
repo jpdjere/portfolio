@@ -10,7 +10,7 @@ interface Props {
 export const FilmsResults = ({films, selectedDate}: Props) => {
 	const [currentSlide, setSlide] = useState(1);
 	useEffect(() => {
-		const slideIndex = films.findIndex(film => film.dateWatched === selectedDate);
+		const slideIndex = films.findIndex(film => film.date_watched === selectedDate);
 		if(slideIndex !== -1){
 			setSlide(slideIndex);
 		}

@@ -12,7 +12,7 @@ const AboutMe = () => {
 
    				<p className="lead">
              I'm an Armenian-Argentinian software developer and journalist, living in Berlin with an Italian passport.
-             I'm a self taught developer, and I like to read and watch movies. I've had the luck of combining
+             I'm a self taught developer, and I like to watch movies and read. I've had the luck of combining
              my passion for technology, news and politics in different projects.
            </p>
    			</div>   			

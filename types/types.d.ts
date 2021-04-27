@@ -14,7 +14,7 @@ export type Film = {
 	vote_average: number;
 	vote_count: number;
 	poster_url: string;
-	dateWatched: Date;
+	date_watched: Date;
 }
 
 export interface Films {

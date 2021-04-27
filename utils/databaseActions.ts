@@ -1,39 +1,26 @@
-import mongoose from "mongoose";
-import connectToDatabase from "./dbConnect";
+import connectToDatabase, { FilmsModel, FilmsFlattenedModel } from "./dbConnect";
 import { getEnrichedFilmsFromSpreadsheetAPI } from "./../utils/getEnrichedFilmsFromSpreadsheetAPI";
 
-const { Schema } = mongoose;
-// const { extractDataSummaryFromAPI, extractDataPollsFromAPI } = require('./extractDataFromAPI');
-
-const FilmsSchema = new Schema({created_at: { type: Date, required: true, default: Date.now }},{ strict: false });
-const FilmsFlattenedSchema = new Schema({created_at: { type: Date, required: true, default: Date.now }},{ strict: false });
-
-const FilmsModel = mongoose.model('films', FilmsSchema);  
-const FilmsFlattenedModel = mongoose.model('flattenedFilms', FilmsFlattenedSchema);  
-
-export const getDataFromDatabase = async (dataToFetch: string) => {
+export const getDataFromDatabase = async () => {
   await connectToDatabase();
-  return new Promise( async (resolve, reject) => {
-    try {
-      if(dataToFetch === 'films'){
-        const filmsData = await FilmsModel.findOne({}, {}, { sort: { 'created_at' : -1 } });
-        return resolve(filmsData);
-      } else if(dataToFetch === 'filmsFlattened') {
-        const filmsFlattenedData = await FilmsFlattenedModel.findOne({}, {}, { sort: { 'created_at' : -1 } });
-        return resolve(filmsFlattenedData);
-      } else {
-        reject('entity needed')
-      }
-
-    } catch (error) {
-      reject(error);
-    }
+  return new Promise(async (resolve, reject) => {
+    return Promise.all([
+      await FilmsModel.findOne({}, {}, { sort: { 'created_at' : -1 } }).lean(),
+      await FilmsFlattenedModel.findOne({}, {}, { sort: { 'created_at' : -1 } }).lean()
+    ]).then(([films, filmsFlattened]) => {
+      resolve({
+        films,
+        filmsFlattened
+      })
+    }).catch(e => {
+      reject(e)
+    })
   })
 }
 
 export const updateDatabase = async () => {
   await connectToDatabase();
-  return new Promise( async (resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
       const {
         films,
@@ -46,9 +33,9 @@ export const updateDatabase = async () => {
         filmsInstance.save(),
         filmsFlattenedInstance.save()
       ]
-      Promise.all(promises).then(data => {
+      return Promise.all(promises).then(data => {
         resolve(data)
-      })
+      }).catch(e => e);
 
     } catch (error) {
       reject(error);
