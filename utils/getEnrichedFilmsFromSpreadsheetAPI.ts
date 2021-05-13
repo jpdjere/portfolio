@@ -1,4 +1,5 @@
 import { addMovieDetailsFromAPI } from '../utils/addMovieDetailsFromAPI';
+import config from "./../config"
 
 export const getEnrichedFilmsFromSpreadsheetAPI = async () => {
   const fullFilmsList = await getFullFilmsList();
@@ -13,7 +14,7 @@ export const getEnrichedFilmsFromSpreadsheetAPI = async () => {
 }
 
 async function getFullFilmsList() {
-  const res = await fetch('http://localhost:3000/api/getFilmsList');
+  const res = await fetch(`${config.host}/api/getFilmsList`);
   return res.json();
 }
 

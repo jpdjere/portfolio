@@ -1,6 +1,6 @@
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
-
+import config from "./../config"
 axiosRetry(axios, { retries: 3 });
 
 export function addMovieDetailsFromAPI(fullFilmsList){
@@ -8,7 +8,7 @@ export function addMovieDetailsFromAPI(fullFilmsList){
     const filmsWithDetailsPromises = currentDate.films.map(async film => {
       if(film.code === "OMIT") return null;
       try {
-        const URI = film.code ? `http://localhost:3000/api/getFilmByCode?id=${film.code}` : `http://localhost:3000/api/getFilmByTitle?t=${film.title}`;
+        const URI = film.code ? `${config.host}/api/getFilmByCode?id=${film.code}` : `${config.host}api/getFilmByTitle?t=${film.title}`;
         const url = encodeURI(URI);
         const filmResult = await axios({
           url,
