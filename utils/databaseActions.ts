@@ -19,7 +19,6 @@ export const getDataFromDatabase = async () => {
 }
 
 export const updateDatabase = async () => {
-  await connectToDatabase();
   return new Promise(async (resolve, reject) => {
     try {
       const {

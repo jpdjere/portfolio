@@ -1,5 +1,5 @@
 const config = {
-  host: process.env.NODE_ENV === "production" ? process.env.VERCEL_URL : "http://localhost:3000"
+  host: process.env.NODE_ENV === "production" ? (process.env.VERCEL_URL || "https://portfolio-git-master-jpdjere.vercel.app/") : "http://localhost:3000"
 }
 
 export default config;
