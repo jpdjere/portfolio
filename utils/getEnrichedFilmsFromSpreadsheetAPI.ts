@@ -14,6 +14,11 @@ export const getEnrichedFilmsFromSpreadsheetAPI = async () => {
 }
 
 async function getFullFilmsList() {
+  console.log({
+    NODE_ENV: process.env.NODE_ENV,
+    VERCEL_URL: process.env.VERCEL_URL,
+    config: config
+  })
   const res = await fetch(`${config.host}/api/getFilmsList`);
   return res.json();
 }
