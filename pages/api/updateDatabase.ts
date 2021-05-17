@@ -7,6 +7,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     await updateDatabase();
     res.send("Database updated at: "+new Date())
   } catch (error) {
-    return res.send(error);
+    return res.status(500).send(error);
   }
 };
