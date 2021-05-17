@@ -9,7 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const data = await getEnrichedFilmsFromSpreadsheetAPI();
       return res.send(data);
     } else {
-      const data = await getDataFromDatabase();
+      const data = await getDataFromDatabase() as any;
       res.send(data._doc.datos);
     }
   } catch (error) {

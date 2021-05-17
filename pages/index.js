@@ -22,7 +22,6 @@ export default function Index(props) {
 
 export async function getStaticProps() {
   const { films, filmsFlattened } = await getDataFromDatabase();
-  // const { films, filmsFlattened } = await getEnrichedFilmsFromSpreadsheetAPI();
 
   return {
     props: JSON.parse(JSON.stringify({
