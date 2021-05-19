@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const { MONGODB_URI } = process.env;
-console.log({MONGODB_URI})
 
 if (!MONGODB_URI) {
   throw new Error(
