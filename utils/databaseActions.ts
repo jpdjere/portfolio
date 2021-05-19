@@ -5,8 +5,8 @@ export const getDataFromDatabase = async () => {
   await connectToDatabase();
   return new Promise(async (resolve, reject) => {
     return Promise.all([
-      await FilmsModel.findOne({}, {}, { sort: { 'created_at' : -1 } }).lean(),
-      await FilmsFlattenedModel.findOne({}, {}, { sort: { 'created_at' : -1 } }).lean()
+      FilmsModel.findOne({}, {}, { sort: { 'created_at' : -1 } }).lean(),
+      FilmsFlattenedModel.findOne({}, {}, { sort: { 'created_at' : -1 } }).lean()
     ]).then(([films, filmsFlattened]) => {
       resolve({
         films,
