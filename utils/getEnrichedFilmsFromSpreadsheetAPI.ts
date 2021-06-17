@@ -14,7 +14,9 @@ export const getEnrichedFilmsFromSpreadsheetAPI = async () => {
 }
 
 async function getFullFilmsList() {
-  const res = await fetch(`${config.host}/api/getFilmsList`);
+  const URL = `${config.host}/api/getFilmsList`;
+  console.log({URL})
+  const res = await fetch(URL);
   return res.json();
 }
 

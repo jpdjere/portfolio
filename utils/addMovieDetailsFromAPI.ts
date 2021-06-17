@@ -9,11 +9,11 @@ export function addMovieDetailsFromAPI(fullFilmsList){
       if(film.code === "OMIT") return null;
       try {
         const URI = film.code ? `${config.host}/api/getFilmByCode?id=${film.code}` : `${config.host}/api/getFilmByTitle?t=${film.title}`;
+        console.log({URI})
         const url = encodeURI(URI);
         const filmResult = await axios({
           url,
         });
-        debugger;
         return {...film, ...filmResult.data}
       } catch (e) {
         console.log(`Error fetching film by title: ${e}`)
