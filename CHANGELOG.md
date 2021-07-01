@@ -2,6 +2,7 @@
 
 - Changed server side rendering to data fetching during build
 - Add movie details to each poster
+- Replace img tag with Next's Image
 
 ## To-Do
 

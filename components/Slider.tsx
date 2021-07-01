@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image'
 import SwiperCore, { Virtual } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Film } from '../types/types';
@@ -47,10 +48,10 @@ const FilmPoster = ({film}: FilmPosterProps) => {
 
 	return (
 		<div className="filmResults">
-			<img 
+			<Image 
 				src={film.poster_url}
 				alt={film.title}
-				onLoad={()=> setLoaded(true)}
+				unsized={true}
 			/>
 			<p className={`${showOriginalTitle} "title" `}>{film.title}</p>
 			{showOriginalTitle && <p className="subtitle">({film.original_title})</p>}
