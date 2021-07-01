@@ -43,15 +43,19 @@ interface FilmPosterProps {
 
 const FilmPoster = ({film}: FilmPosterProps) => {
 	const [isLoaded, setLoaded] = useState(false);
+	const showOriginalTitle = film.original_language !== "en";
 
 	return (
-		<div>
+		<div className="filmResults">
 			<img 
 				src={film.poster_url}
 				alt={film.title}
 				onLoad={()=> setLoaded(true)}
 			/>
-			<p>{film.title}</p>
+			<p className={`${showOriginalTitle} "title" `}>{film.title}</p>
+			{showOriginalTitle && <p className="subtitle">({film.original_title})</p>}
+			<p>Director: {film.director}</p>
+			<p>Watched: {film.date_watched}</p>
 		</div>
 	)
 }

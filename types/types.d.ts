@@ -15,6 +15,7 @@ export type Film = {
 	vote_count: number;
 	poster_url: string;
 	date_watched: Date;
+	director: string;
 }
 
 export interface Films {

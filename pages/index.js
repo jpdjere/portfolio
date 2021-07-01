@@ -20,7 +20,7 @@ export default function Index(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const { films, filmsFlattened } = await getDataFromDatabase();
 
   return {

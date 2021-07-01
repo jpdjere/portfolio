@@ -1,4 +1,5 @@
-#filmsResults {
-  display: flex;
-  justify-content: center;
+.filmResults .title {
+  font-weight: bolder;
+  color: #313131;
+  margin-bottom: 10px;
 }
