@@ -5,18 +5,19 @@ axiosRetry(axios, { retries: 3 });
 
 export function addMovieDetailsFromAPI(fullFilmsList){
   return fullFilmsList.map(async currentDate => {
+    let title = '';
     const filmsWithDetailsPromises = currentDate.films.map(async film => {
+      title = film.title;
       if(film.code === "OMIT") return null;
       try {
         const URI = film.code ? `${config.host}/api/getFilmByCode?id=${film.code}` : `${config.host}/api/getFilmByTitle?t=${film.title}`;
-        console.log({URI})
         const url = encodeURI(URI);
         const filmResult = await axios({
           url,
         });
-        return {...film, ...filmResult.data}
+        return {...film, ...filmResult.data};
       } catch (e) {
-        console.log(`Error fetching film by title: ${e}`)
+        console.log(`Error fetching film by title: ${title} ${e}`)
         return null;
       }
     });

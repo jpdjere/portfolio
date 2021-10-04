@@ -24,7 +24,7 @@ export const Slider = ({films, currentSlide}: SliderProps) => {
 			virtual
 		>
 			{films.map((film, index) => {
-				if(!film.poster_url) return null;
+				if(!film.posterURL) return null;
 
 				return (
 					<SwiperSlide key={film.hexId || Math.random()} virtualIndex={index}>
@@ -49,9 +49,12 @@ const FilmPoster = ({film}: FilmPosterProps) => {
 	return (
 		<div className="filmResults">
 			<Image 
-				src={film.poster_url}
+				src={film.posterURL}
 				alt={film.title}
-				unsized={true}
+				placeholder="blur"
+				width={500}
+				height={750}
+				blurDataURL={film.blurDataURL}
 			/>
 			<p className={`${showOriginalTitle} "title" `}>{film.title}</p>
 			{showOriginalTitle && <p className="subtitle">({film.original_title})</p>}

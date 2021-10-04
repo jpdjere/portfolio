@@ -13,7 +13,8 @@ export type Film = {
 	video:boolean;
 	vote_average: number;
 	vote_count: number;
-	poster_url: string;
+	posterURL: string;
+	blurDataURL: string;
 	date_watched: Date;
 	director: string;
 }
