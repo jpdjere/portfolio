@@ -728,6 +728,9 @@ button.stroke, .button.stroke {
 	border: 3px solid #313131;
 	line-height: 4.8rem;
 }
+.button span {
+	padding: 5px;
+}
 button.stroke.medium, .button.stroke.medium {
 	line-height: 5.1rem !important;
 }
@@ -1025,7 +1028,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	color: #7d7d7d;
 }
 .section-intro {
-	max-width: 700px;
+	max-width: 900px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;

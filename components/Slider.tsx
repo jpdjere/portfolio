@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image'
 import SwiperCore, { Virtual } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,13 +12,25 @@ interface SliderProps {
 
 export const Slider = ({films, currentSlide}: SliderProps) => {
 	const [swiperController, setSwiperController] = useState(null);
-	// Do my slide settings and calculations
-	// ...
+	const [width, setWidth] = useState<number>();
+	const [sliderPerView, setSlidesPerView] = useState(width < 600 ? 1 : 3);
+
+	const handleWindowResize = () => setWidth(window.innerWidth);
+	useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize", handleWindowResize);
+	})
+
+	useEffect(() => {
+		handleWindowResize();
+		setSlidesPerView(width < 600 ? 1 : 3)
+	}, [width])
+	
 	const swiper = (
 		<Swiper 
-			style={{minHeight: "500px"}}
+			style={{minHeight: "600px"}}
 			onSwiper={setSwiperController}
-			slidesPerView={3}
+			slidesPerView={sliderPerView}
 			spaceBetween={20}
 			initialSlide={currentSlide}
 			virtual
@@ -48,18 +60,24 @@ const FilmPoster = ({film}: FilmPosterProps) => {
 
 	return (
 		<div className="filmResults">
-			<Image 
-				src={film.posterURL}
-				alt={film.title}
-				placeholder="blur"
-				width={500}
-				height={750}
-				blurDataURL={film.blurDataURL}
-			/>
-			<p className={`${showOriginalTitle} "title" `}>{film.title}</p>
-			{showOriginalTitle && <p className="subtitle">({film.original_title})</p>}
-			<p>Director: {film.director}</p>
-			<p>Watched: {film.date_watched}</p>
+			<div className="card">
+				<div className="card__image">
+					<Image 
+						src={film.posterURL}
+						alt={film.title}
+						placeholder="blur"
+						width={500}
+						height={750}
+						blurDataURL={film.blurDataURL}
+					/>
+				</div>
+				<div className="card__content">
+					<div className="card__title">{film.title}</div>
+					{showOriginalTitle && <p className="card__subtitle">({film.original_title})</p>}
+					<p className="card__text">Director: {film.director}</p>
+					<p className="card__text">Watched: {film.date_watched}</p>
+				</div>
+			</div>
 		</div>
 	)
 }

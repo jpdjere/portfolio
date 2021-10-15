@@ -18,7 +18,6 @@ export const FilmsResults = ({films, selectedDate}: Props) => {
 
   return (
 		<div className="col-twelve">
-			{currentSlide}
 			{films && <Slider films={films} currentSlide={currentSlide} />}
 		</div>
   )

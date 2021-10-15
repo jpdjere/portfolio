@@ -27,8 +27,8 @@ const ContactInfo = () => {
           <i className="icon-phone"></i>
         </div>
         <h5>Call Me At</h5>
-        <p>Mobile: (+49) 162 231 4973 </p>
-        <a href="https://api.whatsapp.com/send?phone=491622314973">Text me on WhatsApp</a>
+        <p>Mobile: (+49) 157 5158 7085 </p>
+        <a href="https://api.whatsapp.com/send?phone=4915751587085">Text me on WhatsApp</a>
       </div>
       
     </div> 
