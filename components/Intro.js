@@ -1,7 +1,8 @@
+export const LINKEDIN_URI = `https://www.linkedin.com/in/juan-pablo-djeredjian/`;
+export const GITHUB_URI = `https://github.com/jpdjere`;
+export const TWITTER_URI = `https://twitter.com/DjeredjianJuanP`;
+
 export const Intro = () => {
-	const LINKEDIN_URI = `https://www.linkedin.com/in/juan-pablo-djeredjian/`;
-	const GITHUB_URI = `https://github.com/jpdjere`;
-	const TWITTER_URI = `https://twitter.com/JPDjere`;
 
   return (
   	<section id="intro">

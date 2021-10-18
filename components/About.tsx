@@ -13,7 +13,7 @@ const AboutMe = () => {
    				<p className="lead">
              I'm an Armenian-Argentinian software developer and journalist, living in Berlin with an Italian passport.
              I'm a self taught developer, and I like to watch movies and read. I've had the luck of combining
-             my passion for technology, news and politics in different projects.
+             my passion for technology and learning in a wide array of companies and personal projects.
            </p>
    			</div>   			
 
@@ -38,7 +38,7 @@ export const About = () => {
   return (
    <section id="about">  
     <AboutMe />
-    <Buttons />
+    {/* <Buttons /> */}
    </section> 
 
   )

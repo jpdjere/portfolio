@@ -1,17 +1,16 @@
 import { FC } from "react";
+import { TWITTER_URI, GITHUB_URI } from "./Intro";
 
 export const Footer: FC = () => {
+	
   return (
    <footer>
      	<div className="row">
 
      		<div className="col-six tab-full pull-right social">
      			<ul className="footer-social">        
-			      <li><a href="#"><i className="fa fa-facebook"></i></a></li>
-			      <li><a href="#"><i className="fa fa-behance"></i></a></li>
-			      <li><a href="#"><i className="fa fa-twitter"></i></a></li>
-			      <li><a href="#"><i className="fa fa-dribbble"></i></a></li>
-			      <li><a href="#"><i className="fa fa-instagram"></i></a></li>
+			      <li><a href={TWITTER_URI}><i className="fa fa-twitter"></i></a></li>
+			      <li><a href={GITHUB_URI}><i className="fa fa-github"></i></a></li>
 			   	</ul> 
 	      </div>
 
