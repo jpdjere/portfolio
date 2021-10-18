@@ -1,6 +1,7 @@
 export const LINKEDIN_URI = `https://www.linkedin.com/in/juan-pablo-djeredjian/`;
 export const GITHUB_URI = `https://github.com/jpdjere`;
 export const TWITTER_URI = `https://twitter.com/DjeredjianJuanP`;
+export const DEV_TO_URI = `https://dev.to/juandj`;
 
 export const Intro = () => {
 
@@ -26,6 +27,7 @@ export const Intro = () => {
 				<li><a href={LINKEDIN_URI} target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin"></i></a></li>
 				<li><a href={GITHUB_URI} target="_blank" rel="noopener noreferrer"><i className="fa fa-github"></i></a></li>
 				<li><a href={TWITTER_URI} target="_blank" rel="noopener noreferrer"><i className="fa fa-twitter"></i></a></li>
+				<li><a href={DEV_TO_URI} target="_blank" rel="noopener noreferrer"><i className="fa fa-pencil"></i></a></li>
 			</ul> 
 
    </section> 

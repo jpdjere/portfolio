@@ -11,10 +11,14 @@ const AboutMe = () => {
    				<img src="/images/armenia-crop.jpg" alt="Profile Picture" />
 
    				<p className="lead">
-             I'm an Armenian-Argentinian software developer and journalist, living in Berlin with an Italian passport.
-             I'm a self taught developer, and I like to watch movies and read. I've had the luck of combining
-             my passion for technology and learning in a wide array of companies and personal projects.
-           </p>
+             I'm an Armenian-Argentinian software developer, living in Berlin with an Italian passport. I like to watch movies and read.
+          </p>
+   				<p className="lead">
+						 I've had the luck of combining my passion for technology and learning in a wide array of companies and personal projects.
+          </p>
+   				<p className="lead">
+						 I'm a self-taught engineer, and I write and share my learnings so I can help you achieve the same.
+          </p>
    			</div>   			
 
    		</div>   		
