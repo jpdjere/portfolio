@@ -559,8 +559,8 @@ select {
 	display: none;
 }
 .ss-custom-select::after {
-	content: '\f0d7';
-	font-family: 'FontAwesome';
+	/* content: '\f0d7'; */
+	/* font-family: 'FontAwesome'; */
 	position: absolute;
 	top: 50%;
 	right: 1.5rem;
@@ -1629,7 +1629,6 @@ header .logo a {
 #films {
 	background: beige;
 	padding-top: 12rem;
-	padding-bottom: 15rem;
 }
 #films .section-intro {
 	margin-bottom: 3rem;

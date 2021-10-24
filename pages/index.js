@@ -9,10 +9,10 @@ export default function Index(props) {
       <Head>
         <title>Juan Pablo Djeredjian</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <script src="https://kit.fontawesome.com/8b966f91b6.js" crossorigin="anonymous"></script>
         <script src="/js/jquery-2.1.3.min.js"></script>
         <script src="/js/plugins.js"></script>
         <script src="/js/main.js"></script>
-        <script src="https://kit.fontawesome.com/8b966f91b6.js" crossorigin="anonymous"></script>
       </Head>
       <div id="top">
         <App {...props} />

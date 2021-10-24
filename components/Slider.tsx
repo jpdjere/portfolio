@@ -28,7 +28,7 @@ export const Slider = ({films, currentSlide}: SliderProps) => {
 	
 	const swiper = (
 		<Swiper 
-			style={{minHeight: "600px"}}
+			style={{minHeight: "700px"}}
 			onSwiper={setSwiperController}
 			slidesPerView={sliderPerView}
 			spaceBetween={20}
