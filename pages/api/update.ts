@@ -1,11 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { updateDatabase } from "../../utils/databaseActions";
-import connectToDatabase, { FilmsModel, FilmsFlattenedModel } from "../../utils/dbConnect";
+import { triggerDeployment } from "../../utils/triggerDeployment";
+import connectToDatabase from "../../utils/dbConnect";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   await connectToDatabase();
   try {
     await updateDatabase();
+    await triggerDeployment();
     res.send("Database updated at: "+new Date())
   } catch (error) {
     console.log({error})
