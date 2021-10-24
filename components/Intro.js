@@ -24,10 +24,10 @@ export const Intro = () => {
 			</div> 
 
 			<ul className="intro-social">        
-				<li><a href={LINKEDIN_URI} target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin"></i></a></li>
-				<li><a href={GITHUB_URI} target="_blank" rel="noopener noreferrer"><i className="fa fa-github"></i></a></li>
-				<li><a href={TWITTER_URI} target="_blank" rel="noopener noreferrer"><i className="fa fa-twitter"></i></a></li>
-				<li><a href={DEV_TO_URI} target="_blank" rel="noopener noreferrer"><i className="fa fa-pencil"></i></a></li>
+				<li><a href={LINKEDIN_URI} target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a></li>
+				<li><a href={GITHUB_URI} target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a></li>
+				<li><a href={TWITTER_URI} target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a></li>
+				<li><a href={DEV_TO_URI} target="_blank" rel="noopener noreferrer"><i className="fab fa-dev"></i></a></li>
 			</ul> 
 
    </section> 

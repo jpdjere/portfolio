@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { updateDatabase } from "../../utils/databaseActions";
-import connectToDatabase, { FilmsModel, FilmsFlattenedModel } from "./../../utils/dbConnect";
+import connectToDatabase, { FilmsModel, FilmsFlattenedModel } from "../../utils/dbConnect";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   await connectToDatabase();

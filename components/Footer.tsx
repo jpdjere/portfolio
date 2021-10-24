@@ -9,9 +9,9 @@ export const Footer: FC = () => {
 
      		<div className="col-six tab-full pull-right social">
      			<ul className="footer-social">        
-			      <li><a href={TWITTER_URI}><i className="fa fa-twitter"></i></a></li>
-			      <li><a href={GITHUB_URI}><i className="fa fa-github"></i></a></li>
-			      <li><a href={DEV_TO_URI}><i className="fa fa-pencil"></i></a></li>
+			      <li><a href={TWITTER_URI}><i className="fab fa-twitter"></i></a></li>
+			      <li><a href={GITHUB_URI}><i className="fab fa-github"></i></a></li>
+			      <li><a href={DEV_TO_URI}><i className="fab fa-pencil"></i></a></li>
 			   	</ul> 
 	      </div>
 

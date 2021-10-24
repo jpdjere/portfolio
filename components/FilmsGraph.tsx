@@ -30,14 +30,14 @@ export const FilmsGraph = ({ filmsDate, changeSelectedDate, deleteSelectedDate }
       <div className="monthNavigation">
         <button className="button stroke" onClick={() => changeMonths(-3)}>
           <span className="icon">
-            <i className="fa fa-arrow-left"></i>
+            <i className="fab fa-arrow-left"></i>
           </span>
           See previous month
         </button>
         <button className="button stroke" onClick={() => changeMonths(3)}>
           See next month
           <span className="icon">
-            <i className="fa fa-arrow-right"></i>
+            <i className="fab fa-arrow-right"></i>
           </span>
         </button>
       </div>

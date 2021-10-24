@@ -36,9 +36,6 @@
  * ------------------------------------------------------------------- 
  */
 @import url("fonts.css");
-@import url("font-awesome/css/font-awesome.min.css");
-@import url("micons/micons.css");
-
 
 /** 
  * ===================================================================
@@ -74,7 +71,7 @@ body {
 	font-family: "lora-regular", serif;
 	font-size: 1.7rem;
 	line-height: 3rem;
-	color: #6e6e6e;
+	color: black;
 }
 
 /**
@@ -156,7 +153,7 @@ p.lead {
 	font-family: "lora-regular", serif;
 	font-size: 2rem;
 	line-height: 1.8;
-	color: #888888;
+	color: black;
 }
 @media only screen and (max-width:768px) {
 	p.lead {
@@ -1420,6 +1417,10 @@ header .logo a {
 }
 .intro-social li a:hover, .intro-social li a:focus {
 	color: #5659bb;
+}
+
+.intro-social i {
+	font-size: 32px;
 }
 
 /**
